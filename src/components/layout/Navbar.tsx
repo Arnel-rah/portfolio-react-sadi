@@ -63,13 +63,13 @@ const Navbar: React.FC<NavbarProps> = ({
               key={link.href}
               className={`cursor-pointer transition-all duration-300 px-4 py-2 rounded-xl relative group ${
                 currentSection === link.href.substring(1)
-                  ? "text-green-400 bg-green-400/10 border border-green-400/20"
-                  : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                  ? "text-green-400"
+                  : "text-gray-300"
               }`}
               onClick={() => onLinkClick(link.href)}
             >
               {link.label}
-              <div className={`absolute inset-0 rounded-xl bg-linear-to-r from-green-400/20 to-emerald-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${currentSection === link.href.substring(1) ? 'opacity-100' : ''}`} />
+              <div className={`absolute inset-0 rounded-xl bg-linear-to-r  opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${currentSection === link.href.substring(1) ? 'opacity-100' : ''}`} />
             </li>
           ))}
         </ul>
@@ -110,8 +110,8 @@ const Navbar: React.FC<NavbarProps> = ({
               key={link.href}
               className={`cursor-pointer transition-all duration-300 px-4 py-4 rounded-xl text-left ${
                 currentSection === link.href.substring(1)
-                  ? "text-green-400 bg-green-400/10 border-l-4 border-green-400"
-                  : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                  ? "text-green-400"
+                  : "text-gray-300"
               }`}
               onClick={() => {
                 setOpen(false);
