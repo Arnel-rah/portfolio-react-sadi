@@ -2,7 +2,7 @@ import { Mail, Github, Linkedin } from "lucide-react";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="py-20">
+    <div className="pl-1">
       <h1 className="text-3xl sm:text-4xl md:text-6xl font-mono font-bold leading-snug">
         <span className="text-white">Arnel is a</span>{" "}
         <span className="text-green-400">web designer</span>{" "}
