@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import HeroSection from "./components/layout/HeroSection";
 
+
 const App: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<string>("home");
 
@@ -29,7 +30,7 @@ const App: React.FC = () => {
   return (
     <div className="bg-[#0f0f0f] text-neutral-content">
       <Navbar
-        profileImage="/arne-profile.jpg"
+        profileImage="../src/assets/profile.jpg"
         profileName="Arnel"
         links={[
           { label: "#home", href: "#home" },
