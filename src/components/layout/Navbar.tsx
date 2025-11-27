@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({
           <img 
             src={profileImage} 
             alt="Profile" 
-            className="w-12 h-12 rounded-full ring-2 ring-green-400/30 shadow-xl transition-all duration-300 hover:scale-110 hover:ring-green-400/50" 
+            className="w-12 h-12 rounded-full ring-2 ring-green-400/30 shadow-xl transition-all duration-300 hover:scale-110 hover:ring-green-400/50 object-cover object-center" 
           />
           <div className="hidden sm:block">
             <span className="font-mono text-xl text-white font-bold tracking-wide bg-linear-to-r from-green-400 to-emerald-400 bg-clip-text">
