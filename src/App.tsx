@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import HeroSection from "./components/layout/HeroSection";
+import Project from "./components/layout/Project";
 
 
 const App: React.FC = () => {
@@ -49,7 +50,7 @@ const App: React.FC = () => {
       </section>
 
       <section id="works" className="min-h-screen flex items-center px-6 max-w-5xl mx-auto">
-        <h2 className="text-4xl font-mono text-green-400">Works Coming Soon...</h2>
+        <Project/>
       </section>
 
       <section id="about-me" className="min-h-screen flex items-center px-6 max-w-5xl mx-auto">
