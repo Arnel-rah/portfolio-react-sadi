@@ -43,7 +43,7 @@ const App: React.FC = () => {
       />
 
       <section id="home" className="pt-28">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto ">
           <HeroSection />
         </div>
       </section>
