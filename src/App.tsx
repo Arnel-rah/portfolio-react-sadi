@@ -3,7 +3,6 @@ import Navbar from "./components/layout/Navbar";
 import HeroSection from "./components/layout/HeroSection";
 import Project from "./components/layout/Project";
 
-
 const App: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<string>("home");
 
