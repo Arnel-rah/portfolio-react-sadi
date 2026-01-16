@@ -15,7 +15,6 @@ const Project: React.FC = () => {
       gitHubUrl: "https://github.com/username/todo-app",
       projectUrlDemo: "https://todo-app-demo.vercel.app",
     },
-    // ... tes autres projets
   ];
 
   const tabs = [
