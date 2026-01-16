@@ -1,112 +1,133 @@
-import React, { useState } from "react";
-import ProjectCard from "./ProjectCard";
-import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Sparkles, History, Layout } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { Github, ExternalLink, Code2, FolderGit2, Star } from "lucide-react";
+
+interface ProjectData {
+  title: string;
+  description: string;
+  tags: string[];
+  github: string;
+  demo: string;
+  image: string;
+}
+
+const projects: ProjectData[] = [
+  {
+    title: "E-Commerce OS",
+    description:
+      "A fullstack Next.js 14 template with Stripe integration and a custom admin dashboard.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
+    github: "https://github.com",
+    demo: "https://demo.com",
+    image:
+      "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    title: "Task Management API",
+    description:
+      "Robust RESTful API with JWT authentication, role-based access control and Redis caching.",
+    tags: ["Node.js", "Express", "PostgreSQL", "Redis"],
+    github: "https://github.com",
+    demo: "https://demo.com",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
+  },
+  {
+    title: "Real-time Chat App",
+    description:
+      "Instant messaging application using Socket.io for real-time communication and MongoDB for history.",
+    tags: ["React", "Socket.io", "MongoDB", "Node.js"],
+    github: "https://github.com",
+    demo: "https://demo.com",
+    image:
+      "https://images.unsplash.com/photo-1611746435394-5005b4d92e13?q=80&w=1000&auto=format&fit=crop",
+  },
+];
 
 const Project: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("All");
-
-  const projects = [
-    {
-      projectName: "Application moderne de gestion de tâches avec interface intuitive.",
-      projectTitle: "Todo App",
-      projectImage: "/assets/todo.png",
-      projectTechno: ["React", "TypeScript", "Tailwind", "Node"],
-      gitHubUrl: "https://github.com/username/todo-app",
-      projectUrlDemo: "https://todo-app-demo.vercel.app",
-    },
-  ];
-
-  const tabs = [
-    { id: "All", icon: <Layout size={16} />, label: "Tous les projets" },
-    { id: "React", icon: <Code2 size={16} />, label: "React" },
-    { id: "Fullstack", icon: <Sparkles size={16} />, label: "Fullstack" },
-  ];
-
   return (
-    <section id="projects" className="px-6 py-24 max-w-7xl mx-auto bg-[#050505]">
-      
-      {/* Header Style Front-end */}
-      <div className="mb-16">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-2 text-blue-500 font-mono text-sm mb-4"
-        >
-          <span className="px-2 py-1 bg-blue-500/10 rounded">02.</span>
-          <span>work_in_progress</span>
-        </motion.div>
-        
-        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8">
-          MES RÉALISATIONS<span className="text-blue-600">.</span>
-        </h2>
-
-        {/* Custom GitHub Tabs (Plus moderne) */}
-        <div className="flex flex-wrap items-center gap-2 p-1 bg-[#111] border border-white/5 rounded-xl w-fit">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`
-                relative flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all
-                ${activeTab === tab.id ? "text-white" : "text-gray-500 hover:text-gray-300"}
-              `}
-            >
-              {activeTab === tab.id && (
-                <motion.div 
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-[#222] rounded-lg border border-white/10"
-                  transition={{ type: "spring", duration: 0.5 }}
-                />
-              )}
-              <span className="relative z-10">{tab.icon}</span>
-              <span className="relative z-10">{tab.label}</span>
-            </button>
-          ))}
+    <div className="w-full font-sans">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 px-2">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-indigo-500/10 rounded-lg shrink-0">
+            <FolderGit2 className="text-indigo-500" size={28} />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white uppercase italic">
+            Featured.<span className="text-indigo-500">works</span>()
+          </h2>
         </div>
+        <p className="text-slate-500 font-mono text-xs md:text-sm italic">
+          // Selection of my best fullstack contributions
+        </p>
       </div>
 
-      {/* Projects Grid */}
-      <motion.div 
-        layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
-        <AnimatePresence mode='popLayout'>
-          {projects.map((project, index) => (
-            <motion.div
-              layout
-              key={project.projectTitle}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ProjectCard {...project} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            className="group relative bg-[#0d1117] border border-[#30363d] rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-all duration-300 shadow-xl"
+          >
+            <div className="relative h-48 overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0d1117] to-transparent opacity-60" />
 
-      {/* GitHub Contributions Hint (Style Front-end) */}
-      <motion.div 
-        className="mt-20 p-8 border border-dashed border-white/10 rounded-2xl flex flex-col items-center text-center"
-        whileHover={{ borderColor: "rgba(59, 130, 246, 0.5)" }}
-      >
-        <div className="p-3 bg-blue-500/10 rounded-full text-blue-500 mb-4">
-          <History size={24} />
-        </div>
-        <h3 className="text-white font-bold text-lg mb-2">Curieux d'en voir plus ?</h3>
-        <p className="text-gray-400 text-sm max-w-sm mb-6">
-          Mon activité quotidienne se passe sur GitHub. Allez jeter un œil à mes derniers commits et contributions Open Source.
-        </p>
-        <a 
-          href="https://github.com/ton-profil"
-          className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300"
-        >
-          Visiter mon profil GitHub
-        </a>
-      </motion.div>
-    </section>
+              <div className="absolute top-4 right-4 p-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-amber-400">
+                <Star size={14} fill="currentColor" />
+              </div>
+            </div>
+
+            <div className="p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <Code2 size={16} className="text-indigo-400" />
+                <h3 className="text-xl font-bold text-white tracking-tight">
+                  {project.title}
+                </h3>
+              </div>
+
+              <p className="text-slate-400 text-sm leading-relaxed mb-6 h-12 line-clamp-2">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] font-mono font-bold px-2 py-1 rounded bg-white/5 text-slate-300 border border-white/5"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 pt-4 border-t border-white/5">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-indigo-400 transition-colors"
+                >
+                  <Github size={16} /> source
+                </a>
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-indigo-400 transition-colors"
+                >
+                  <ExternalLink size={16} /> live_demo
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
 };
 
