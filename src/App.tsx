@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import HeroSection from "./components/layout/HeroSection";
 import Project from "./components/layout/Project";
 import avatar from "../src/assets/profile.jpg";
+import AboutMe from "./components/layout/AboutMe";
 const App: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<string>("home");
 
@@ -79,7 +80,7 @@ const App: React.FC = () => {
               ABOUT <span className="text-indigo-500">ME</span>
             </h2>
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 font-mono text-slate-400">
-              <p>// Loading experiences...</p>
+              <AboutMe/>
             </div>
           </div>
         </section>
