@@ -1,133 +1,90 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Github, ExternalLink, Code2, FolderGit2, Star } from "lucide-react";
+import { Server, Database, Network, Terminal } from "lucide-react";
+import ProjectCard from "./ProjectCard";
 
-interface ProjectData {
-  title: string;
-  description: string;
-  tags: string[];
-  github: string;
-  demo: string;
-  image: string;
-}
-
-const projects: ProjectData[] = [
+const projects = [
   {
-    title: "E-Commerce OS",
-    description:
-      "A fullstack Next.js 14 template with Stripe integration and a custom admin dashboard.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    image:
-      "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
+    title: "Cloud Automation",
+    description: "Full orchestration of AWS server instances using Ansible playbooks and Python scripts.",
+    tags: ["AWS", "Ansible", "Python"],
+    status: "deployed",
+    github: "#",
+    demo: "#",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800" // Updated AWS-themed image
   },
   {
-    title: "Task Management API",
-    description:
-      "Robust RESTful API with JWT authentication, role-based access control and Redis caching.",
-    tags: ["Node.js", "Express", "PostgreSQL", "Redis"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
+    title: "Java Banking API",
+    description: "High-security financial microservice featuring seamless Stripe payment integration.",
+    tags: ["Java", "Stripe", "PostgreSQL"],
+    status: "online",
+    github: "#",
+    demo: "#",
+    image: "https://images.unsplash.com/photo-155066931-4365d14bab8c?q=80&w=800"
   },
   {
-    title: "Real-time Chat App",
-    description:
-      "Instant messaging application using Socket.io for real-time communication and MongoDB for history.",
-    tags: ["React", "Socket.io", "MongoDB", "Node.js"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    image:
-      "https://images.unsplash.com/photo-1611746435394-5005b4d92e13?q=80&w=1000&auto=format&fit=crop",
+    title: "Express Middleware",
+    description: "Distributed caching system and session management using high-performance Redis layers.",
+    tags: ["Express", "Node.js", "Redis"],
+    status: "online",
+    github: "#",
+    demo: "#",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800"
   },
+  {
+    title: "Infra Monitoring",
+    description: "Real-time system log analysis and container health monitoring with Python and MongoDB.",
+    tags: ["Python", "Docker", "MongoDB"],
+    status: "building",
+    github: "#",
+    demo: "#",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800"
+  }
 ];
 
-const Project: React.FC = () => {
+const Project = () => {
   return (
-    <div className="w-full font-sans">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 px-2">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-indigo-500/10 rounded-lg shrink-0">
-            <FolderGit2 className="text-indigo-500" size={28} />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white uppercase italic">
-            Featured.<span className="text-indigo-500">works</span>()
-          </h2>
+    <section className="w-full py-12 md:py-24 px-4 md:px-6 max-w-7xl mx-auto">
+      <div className="flex flex-col gap-4 md:gap-6 mb-12 md:mb-20 border-l-2 border-indigo-500 pl-4 md:pl-8">
+        <div className="flex items-center gap-3 text-indigo-500 font-mono text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.4em]">
+          <span className="p-1 bg-indigo-500/10 rounded shrink-0">CMD</span>
+          <span className="truncate">GET_PROJECT_REGISTRY --verbose</span>
         </div>
-        <p className="text-slate-500 font-mono text-xs md:text-sm italic">
-          // Selection of my best fullstack contributions
-        </p>
+        
+        <h2 className="text-4xl md:text-8xl font-black text-white italic tracking-tighter uppercase leading-none">
+          Work.<span className="text-indigo-500">Nodes</span>
+        </h2>
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-slate-500 font-mono text-[10px] md:text-xs">
+          <div className="flex items-center gap-2">
+            <Database size={14} className="text-indigo-500/50" /> 
+            <span>4 Clusters Found</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Network size={14} className="text-indigo-500/50" /> 
+            <span>100% Uptime</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Server size={14} className="text-indigo-500/50" /> 
+            <span>AWS / Linux Env</span>
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            className="group relative bg-[#0d1117] border border-[#30363d] rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-all duration-300 shadow-xl"
-          >
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-[#0d1117] to-transparent opacity-60" />
-
-              <div className="absolute top-4 right-4 p-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 text-amber-400">
-                <Star size={14} fill="currentColor" />
-              </div>
-            </div>
-
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <Code2 size={16} className="text-indigo-400" />
-                <h3 className="text-xl font-bold text-white tracking-tight">
-                  {project.title}
-                </h3>
-              </div>
-
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 h-12 line-clamp-2">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] font-mono font-bold px-2 py-1 rounded bg-white/5 text-slate-300 border border-white/5"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex items-center gap-4 pt-4 border-t border-white/5">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-indigo-400 transition-colors"
-                >
-                  <Github size={16} /> source
-                </a>
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-indigo-400 transition-colors"
-                >
-                  <ExternalLink size={16} /> live_demo
-                </a>
-              </div>
-            </div>
-          </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {projects.map((p, i) => (
+          <ProjectCard 
+            key={i} 
+            index={i}
+            {...p as any}
+          />
         ))}
       </div>
-    </div>
+      <div className="mt-12 flex items-center gap-3 text-slate-700 font-mono text-[10px] md:text-xs border-t border-white/5 pt-8">
+        <Terminal size={14} />
+        <p>
+          System check complete. All nodes are <span className="text-emerald-500/50 uppercase">Operational</span>
+        </p>
+      </div>
+    </section>
   );
 };
 
