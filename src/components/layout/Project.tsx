@@ -1,4 +1,4 @@
-import { Server, Database, Network, Terminal } from "lucide-react";
+import { Server, Database, Network } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 
 const projects = [
@@ -77,12 +77,6 @@ const Project = () => {
             {...p as any}
           />
         ))}
-      </div>
-      <div className="mt-12 flex items-center gap-3 text-slate-700 font-mono text-[10px] md:text-xs border-t border-white/5 pt-8">
-        <Terminal size={14} />
-        <p>
-          System check complete. All nodes are <span className="text-emerald-500/50 uppercase">Operational</span>
-        </p>
       </div>
     </section>
   );
