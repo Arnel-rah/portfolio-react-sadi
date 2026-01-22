@@ -132,8 +132,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <p className="text-slate-400 text-sm font-mono leading-relaxed mb-6 line-clamp-3">
           <span className="text-indigo-500/70 font-bold">$</span> {description}
         </p>
-
-        {/* Tech Stack Row - Icons are now visible and colorful */}
         <div className="flex flex-wrap gap-4 mb-8 mt-auto">
           {tags.map((tag) => (
             <div key={tag} className="group/icon relative flex items-center">
@@ -148,8 +146,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
           ))}
         </div>
-
-        {/* Footer Actions */}
         <div className="flex items-center gap-5 pt-5 border-t border-white/5 mt-auto">
           <a
             href={github}

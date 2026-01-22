@@ -67,19 +67,14 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        <section id="works" className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <section id="works" className="">
           <Project />
         </section>
 
-        <section id="about-me" className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
-          <div className="border-t border-white/5 pt-10 md:pt-16">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6 md:mb-10 uppercase text-center md:text-left">
+        <section id="about-me" className="max-w-7xl mx-auto px-4 md:px-6 md:py-12">            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6 md:mb-10 uppercase text-center md:text-left">
               ABOUT <span className="text-indigo-500">ME</span>
             </h2>
-            <div className="bg-white/5 p-4 md:p-10 rounded-3xl border border-white/10">
               <AboutMe />
-            </div>
-          </div>
         </section>
 
         <section id="contacts" className="max-w-7xl mx-auto px-4 md:px-6 pb-12 md:pb-24">
