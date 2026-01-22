@@ -3,13 +3,13 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "Cloud Automation",
-    description: "Full orchestration of AWS server instances using Ansible playbooks and Python scripts.",
-    tags: ["AWS", "Ansible", "Python"],
+    title: "Global Edge Network",
+    description: "High-performance monitoring system for edge nodes with automated failover logic.",
+    tags: ["Python", "Docker", "Redis"],
     status: "deployed",
     github: "#",
     demo: "#",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800" // Updated AWS-themed image
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=800"
   },
   {
     title: "Java Banking API",
