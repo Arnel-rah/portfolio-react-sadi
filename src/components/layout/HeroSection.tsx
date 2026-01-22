@@ -1,69 +1,86 @@
 import React from "react";
-import { Mail, Github, Linkedin, Terminal, Command } from "lucide-react";
+import { Mail, Github, Linkedin, Terminal, Cloud, Server, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-[80vh] flex flex-col justify-center px-6">
+    <section className="relative min-h-[90vh] flex flex-col justify-center px-4 md:px-10 overflow-hidden">
       <div className="absolute top-1/4 -left-20 w-64 h-64 bg-indigo-500/10 blur-[120px] rounded-full" />
+      <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-blue-500/10 blur-[120px] rounded-full" />
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-4xl"
+        className="max-w-5xl z-10"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono mb-6">
-          <Terminal size={14} />
-          <span className="animate-pulse">Available for apprenticeship 2026</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/5 border border-blue-500/20 text-blue-400 text-[10px] md:text-xs font-mono mb-8 w-fit">
+          <Cloud size={14} className="shrink-0" />
+          <span className="uppercase tracking-wider">
+            <span className="hidden sm:inline">Focus: </span>
+            <span className="animate-pulse">Backend & Cloud Infrastructure 2026</span>
+          </span>
         </div>
-
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1]">
-          <span className="text-white">Arnel is a </span>
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+          <span className="text-white block tracking-tight">BACKEND</span>
           <span className="relative inline-block">
-            <span className="text-indigo-500 italic">fullstack js</span>
+            <span className="text-indigo-500 italic uppercase">Engineer</span>
             <motion.span 
-              className="absolute -bottom-2 left-0 h-1 w-full bg-indigo-500/30"
+              className="absolute -bottom-1 md:-bottom-2 left-0 h-1 md:h-2 w-full bg-indigo-500/30"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 1, duration: 0.8 }}
             />
           </span>
           <br />
-          <span className="text-white/90">developer & </span>
-          <span className="text-indigo-400 font-mono font-light italic text-3xl md:text-5xl">creative_coder</span>
+          <span className="text-white/40">INFRA & </span>
+          <span className="text-blue-400 font-mono font-light italic text-2xl sm:text-5xl md:text-6xl">
+            cloud_architect
+          </span>
         </h1>
 
-        <p className="mt-8 text-lg md:text-xl font-mono text-slate-400 max-w-2xl leading-relaxed">
-          <span className="text-indigo-500">const</span> <span className="text-white">profile</span> = {"{"} <br />
-          <span className="ml-4">mission: <span className="text-emerald-400">"Build scalable apps where logic meets design"</span>,</span> <br />
-          <span className="ml-4">stack: [<span className="text-amber-400">"React", "Node.js", "TypeScript"</span>]</span> <br />
-          {"}"};
-        </p>
-
-        <div className="mt-12 flex flex-wrap gap-6 items-center">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="mailto:sadiarnel145@gmail.com"
-            className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-xl text-sm transition-colors hover:bg-indigo-500 hover:text-white"
-          >
-            <Mail size={18} />
-            Contact Me
-          </motion.a>
-          <div className="flex items-center gap-5 text-slate-400">
-            <a href="https://github.com/Arnel-rah" target="_blank" className="hover:text-white transition-colors flex items-center gap-2 text-sm font-mono">
-              <Github size={20} /> /github
-            </a>
-            <a href="https://linkedin.com" target="_blank" className="hover:text-white transition-colors flex items-center gap-2 text-sm font-mono">
-              <Linkedin size={20} /> /linkedin
-            </a>
+        <div className="relative group max-w-xl">
+          <div className="absolute -inset-1 bg-linear-to-r from-blue-500/20 to-indigo-500/20 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+          <div className="relative p-5 md:p-8 bg-[#0a0a0a]/90 backdrop-blur-sm border border-white/5 rounded-xl font-mono text-sm md:text-base leading-relaxed overflow-hidden">
+            <div className="flex gap-2 mb-4 border-b border-white/5 pb-2">
+              <Server size={14} className="text-slate-500" />
+              <span className="text-slate-500 text-[10px]">arnel-infra-config.yml</span>
+            </div>
+            <p className="space-y-1">
+              <span className="text-blue-500">infrastructure:</span> <br />
+              <span className="ml-4 md:ml-6 text-slate-400">cloud: <span className="text-emerald-400">"AWS / Docker"</span></span> <br />
+              <span className="ml-4 md:ml-6 text-slate-400">backend: <span className="text-amber-400">["Node.js", "Go", "PostgreSQL"]</span></span> <br />
+              <span className="ml-4 md:ml-6 text-slate-400">goal: <span className="text-indigo-400">"High_Scalability"</span></span>
+            </p>
           </div>
         </div>
 
-        <div className="mt-16 flex items-center gap-3 text-slate-600 font-mono text-xs border-t border-white/5 pt-8">
-          <Command size={14} />
-          <span>Press <kbd className="bg-white/5 px-1.5 py-0.5 rounded border border-white/10">cmd + k</kbd> to search projects</span>
+        <div className="mt-10 flex flex-col sm:flex-row gap-6 sm:items-center">
+          <motion.a
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            href="mailto:sadiarnel145@gmail.com"
+            className="group flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-black rounded-full text-xs uppercase tracking-widest transition-all hover:bg-blue-600 hover:text-white"
+          >
+            <Mail size={16} />
+            Connect to Server
+            <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </motion.a>
+
+          <div className="flex items-center justify-center sm:justify-start gap-6">
+            <a href="https://github.com/Arnel-rah" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-xs font-mono font-bold uppercase">
+              <Github size={18} /> .git
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-xs font-mono font-bold uppercase">
+              <Linkedin size={18} /> .network
+            </a>
+          </div>
+        </div>
+        <div className="mt-16 flex items-center gap-3 text-slate-700 font-mono text-[10px] md:text-xs border-t border-white/5 pt-8">
+          <Terminal size={14} />
+          <p>
+            Running on <span className="text-blue-500/50 italic underline decoration-blue-500/20 underline-offset-4 font-black tracking-widest uppercase">Vercel Edge Runtime</span>
+          </p>
         </div>
       </motion.div>
     </section>
