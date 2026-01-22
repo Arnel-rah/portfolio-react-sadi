@@ -1,124 +1,127 @@
 import React from "react";
-import { motion } from "framer-motion";import { 
-  Terminal, Globe, Cpu, Coffee, 
-  Code2, ExternalLink, ShieldCheck, 
-  Zap, Layers
+import { motion } from "framer-motion";
+import { 
+  Database, MapPin, Activity, 
+  Cloud, Terminal, GitBranch
 } from "lucide-react";
 
 const AboutMe: React.FC = () => {
   const skills = [
-    { name: "React", icon: <Zap size={14} />, color: "text-sky-400", bg: "bg-sky-400/10", border: "border-sky-400/20" },
-    { name: "TypeScript", icon: <ShieldCheck size={14} />, color: "text-blue-500", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-    { name: "Node.js", icon: <Cpu size={14} />, color: "text-green-500", bg: "bg-green-500/10", border: "border-green-500/20" },
-    { name: "Next.js", icon: <Layers size={14} />, color: "text-white", bg: "bg-white/10", border: "border-white/20" },
-    { name: "Tailwind", icon: <Code2 size={14} />, color: "text-cyan-400", bg: "bg-cyan-400/10", border: "border-cyan-400/20" },
-    { name: "PostgreSQL", icon: <Terminal size={14} />, color: "text-indigo-400", bg: "bg-indigo-400/10", border: "border-indigo-400/20" },
+    { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933", color: "text-green-500" },
+    { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB", color: "text-blue-400" },
+    { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1", color: "text-indigo-400" },
+    { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED", color: "text-sky-400" },
+    { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032", color: "text-orange-500" },
+    { name: "Linux", icon: "https://cdn.simpleicons.org/linux/white", color: "text-white" },
+    { name: "AWS", icon: "https://cdn.simpleicons.org/amazonwebservices/white", color: "text-white" },
+    { name: "Terraform", icon: "https://cdn.simpleicons.org/terraform/844FBA", color: "text-purple-400" },
+    { name: "Redis", icon: "https://cdn.simpleicons.org/redis/FF4438", color: "text-red-400" },
   ];
 
   return (
-    <div className="w-full font-sans overflow-hidden">
-      {/* SECTION HEADER */}
-      <div className="flex items-center gap-3 mb-8 md:mb-12 px-2">
-        <div className="p-2 bg-indigo-500/10 rounded-lg shrink-0">
-          <Terminal className="text-indigo-500" size={24} />
+    <div className="w-full font-sans text-slate-300">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 px-1">
+        <div className="flex items-center gap-4">
+          <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
+            <Terminal className="text-indigo-500" size={24} />
+          </div>
+          <div className="flex flex-col">
+            <h2 className="text-xs md:text-sm font-mono text-indigo-500 font-bold uppercase tracking-[0.2em]">Developer_Manifest</h2>
+            <p className="text-xs text-slate-500 font-mono italic">env: production_ready</p>
+          </div>
         </div>
-        <h2 className="text-2xl md:text-5xl font-black tracking-tighter text-white uppercase italic">
-          System.<span className="text-indigo-500">info</span>()
-        </h2>
+        <div className="flex items-center gap-3 self-start md:self-auto bg-white/5 px-4 py-2 rounded-full border border-white/10">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs font-mono uppercase tracking-widest text-slate-400">System Online</span>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="lg:col-span-2 bg-[#0d1117] border border-[#30363d] rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          className="lg:col-span-2 bg-[#0d0d0e]/80 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl"
         >
-          <div className="bg-[#161b22] px-4 py-3 border-b border-[#30363d] flex items-center justify-between shrink-0">
-            <div className="flex items-center gap-2">
-              <Code2 size={14} className="text-slate-500" />
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">About_Me.md</span>
+          <div className="bg-white/5 px-6 py-4 border-b border-white/5 flex items-center justify-between">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/20" />
+              <div className="w-3 h-3 rounded-full bg-amber-500/20" />
+              <div className="w-3 h-3 rounded-full bg-emerald-500/20" />
             </div>
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-              <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/20" />
+            <div className="text-xs font-mono text-slate-500 lowercase flex items-center gap-2">
+                <GitBranch size={14} /> main/backend_stack.config
             </div>
           </div>
 
-          <div className="p-6 md:p-10 grow">
-            <div className="flex items-center gap-3 mb-6">
-              <Globe size={20} className="text-indigo-400 shrink-0" />
-              <h3 className="text-xl md:text-2xl font-bold text-white">Fullstack JS Explorer</h3>
-            </div>
+          <div className="p-8 md:p-12 grow">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-6 leading-tight">
+              Aspiring <span className="text-indigo-400">Backend Engineer</span> focused on Infrastructure & Cloud
+            </h3>
             
-            <p className="text-slate-400 leading-relaxed text-sm md:text-base mb-8">
-              Based in the digital world, I specialize in the 
-              <span className="text-indigo-400 font-bold"> JavaScript / TypeScript </span> 
-              ecosystem. I build scalable architectures where high-performance code meets intuitive UI/UX.
+            <p className="text-slate-400 leading-relaxed text-base md:text-lg mb-12 font-mono max-w-2xl">
+              I build robust server-side applications and automate deployment workflows. My goal is to design scalable systems that bridge the gap between clean code and reliable cloud infrastructure.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {skills.map((skill, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {skills.map((skill) => (
                 <motion.div 
                   key={skill.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`${skill.bg} ${skill.color} ${skill.border} px-3 py-2.5 rounded-xl border font-mono text-[11px] font-bold flex items-center gap-2.5 hover:bg-opacity-20 transition-all cursor-default group`}
+                  whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(99,102,241,0.3)" }}
+                  className="bg-white/5 border border-white/10 p-4 md:p-5 rounded-2xl flex items-center gap-4 transition-all group"
                 >
-                  <span className="group-hover:scale-110 transition-transform">{skill.icon}</span>
-                  {skill.name}
+                  <img 
+                    src={skill.icon} 
+                    alt={skill.name} 
+                    className="w-6 h-6 md:w-8 md:h-8 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                  <span className={`text-sm md:text-base font-mono font-bold ${skill.color}`}>{skill.name}</span>
                 </motion.div>
               ))}
             </div>
           </div>
         </motion.div>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-8">
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-indigo-600 rounded-2xl p-6 text-white relative overflow-hidden group shadow-lg shadow-indigo-500/20 flex-1 min-h-[180px]"
+            className="bg-linear-to-br from-indigo-600 to-indigo-800 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg min-h-62.5 flex flex-col justify-end"
           >
-            <div className="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-500">
-              <Cpu size={140} />
-            </div>
+            <Cloud className="absolute -right-4 -bottom-4 opacity-20 group-hover:scale-110 transition-transform duration-700" size={160} />
             <div className="relative z-10">
-              <span className="text-[10px] font-mono font-black uppercase tracking-[0.2em] bg-black/20 px-2 py-1 rounded-md">
-                Status: 2026 Open
-              </span>
-              <div className="mt-8">
-                <h4 className="text-3xl font-black italic leading-none uppercase tracking-tighter">Apprentice</h4>
-                <p className="text-[11px] mt-3 opacity-80 font-mono leading-relaxed max-w-[200px]">
-                  Looking for a professional tech stack to grow and contribute to real-world production code.
-                </p>
+              <div className="flex items-center gap-2 mb-6">
+                <Activity size={18} className="animate-pulse" />
+                <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] bg-black/20 px-3 py-1.5 rounded-lg">Vision</span>
+              </div>
+              <h4 className="text-4xl font-black uppercase tracking-tighter italic leading-none mb-4">CLOUD <br/>NATIVE</h4>
+              <p className="text-sm md:text-base opacity-90 font-mono leading-relaxed">
+                Ready to manage containerized environments and CI/CD pipelines.
+              </p>
+            </div>
+          </motion.div>
+
+          <div className="bg-[#0d0d0e] border border-white/10 rounded-3xl p-8 flex flex-col gap-8 shadow-xl">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Database size={18} className="text-indigo-400" />
+                <span className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">Environment</span>
+              </div>
+              <div className="flex items-center gap-2 text-indigo-500 bg-indigo-500/5 px-3 py-1 rounded-full border border-indigo-500/10">
+                <MapPin size={14} />
+                <span className="text-[10px] font-mono font-bold tracking-tighter uppercase">Remote / Paris</span>
               </div>
             </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="bg-[#111] border border-white/5 rounded-2xl p-6 flex flex-col justify-center gap-4"
-          >
-            <div className="flex items-center gap-2 text-indigo-400">
-              <Coffee size={16} />
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">Mentality</span>
+            
+            <div className="space-y-4">
+                <div className="flex items-center justify-between text-xs md:text-sm font-mono border-b border-white/5 pb-3">
+                    <span className="text-slate-500">Commitment</span>
+                    <span className="text-white">Full-time</span>
+                </div>
+                <div className="flex items-center justify-between text-xs md:text-sm font-mono">
+                    <span className="text-slate-500">Availability</span>
+                    <span className="text-emerald-500 font-bold">Open to Work</span>
+                </div>
             </div>
-            <p className="text-slate-400 text-xs md:text-sm leading-relaxed italic border-l-2 border-indigo-500 pl-4">
-              "Simple is better than complex. Clean code is not written, it's refined."
-            </p>
-            <div className="flex items-center gap-2 text-indigo-500 font-mono text-[9px] font-bold mt-2">
-              <ExternalLink size={10} />
-              <span>PARIS / REMOTE</span>
-            </div>
-          </motion.div>
-
+          </div>
         </div>
       </div>
     </div>
