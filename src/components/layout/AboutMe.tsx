@@ -84,7 +84,7 @@ const AboutMe: React.FC = () => {
 
         <div className="flex flex-col gap-8">
           <motion.div 
-            className="bg-linear-to-br from-indigo-600 to-indigo-800 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg min-h-[280px] flex flex-col justify-end"
+            className="bg-linear-to-br from-indigo-600 to-indigo-800 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg min-h-70 flex flex-col justify-end"
           >
             <Cloud className="absolute -right-4 -bottom-4 opacity-20 group-hover:scale-110 transition-transform duration-700 w-32 h-32 md:w-40 md:h-40" />
             <div className="relative z-10">
