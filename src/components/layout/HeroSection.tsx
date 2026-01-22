@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Github, Linkedin, Terminal, Cloud, Server, ChevronRight } from "lucide-react";
+import { Mail, Github, Linkedin, Cloud, Server, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
@@ -75,12 +75,6 @@ const HeroSection: React.FC = () => {
               <Linkedin size={18} /> .network
             </a>
           </div>
-        </div>
-        <div className="mt-16 flex items-center gap-3 text-slate-700 font-mono text-[10px] md:text-xs border-t border-white/5 pt-8">
-          <Terminal size={14} />
-          <p>
-            Running on <span className="text-blue-500/50 italic underline decoration-blue-500/20 underline-offset-4 font-black tracking-widest uppercase">Vercel Edge Runtime</span>
-          </p>
         </div>
       </motion.div>
     </section>
