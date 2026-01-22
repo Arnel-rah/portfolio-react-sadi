@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GitBranch, Terminal, FileCode } from "lucide-react";
+import { Command, Menu, X, Cpu, Github, User } from "lucide-react";
 
 export interface NavbarProps {
   profileImage: string;
@@ -20,95 +20,108 @@ const Navbar: React.FC<NavbarProps> = ({
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const branchName = currentSection ? `feat/${currentSection}` : "main";
-
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-500 ${scrolled ? "top-2" : "top-6"}`}>
-      <div className={`relative flex items-center justify-between px-4 py-2 rounded-2xl border transition-all duration-500 ${
-          scrolled 
-            ? "bg-[#020617]/80 backdrop-blur-xl border-indigo-500/20 shadow-xl" 
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 pointer-events-none">
+      <motion.div
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`
+          flex items-center justify-between w-full max-w-4xl px-3 py-2
+          pointer-events-auto rounded-full border transition-all duration-500
+          ${scrolled 
+            ? "bg-black/60 backdrop-blur-xl border-white/10 shadow-2xl" 
             : "bg-transparent border-transparent"
-        }`}>
-                <div className="flex items-center gap-4">
-          <div className="relative group cursor-pointer" onClick={() => onLinkClick("#home")}>
+          }
+        `}
+      >
+        <div 
+          className="flex items-center gap-3 cursor-pointer group"
+          onClick={() => onLinkClick("#home")}
+        >
+          <div className="relative">
             <img 
               src={profileImage} 
-              className="w-10 h-10 rounded-xl object-cover border border-indigo-500/30" 
-              alt="avatar" 
+              alt={profileName}
+              className="w-9 h-9 rounded-full object-cover border-2 border-indigo-500/50 group-hover:border-indigo-500 transition-colors"
             />
-            <span className="absolute -top-1 -right-1 flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
-            </span>
+            <div className="absolute inset-0 rounded-full bg-indigo-500/20 animate-pulse group-hover:hidden" />
           </div>
-
-          <div className="hidden sm:flex flex-col">
-            <h1 className="text-white font-bold text-sm tracking-tight">{profileName}</h1>
-            <div className="flex items-center gap-1.5 text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-md">
-              <GitBranch size={10} />
-              <span className="uppercase tracking-tighter">{branchName}</span>
-            </div>
+          <div className="hidden sm:flex flex-col leading-none">
+            <span className="text-white text-[13px] font-bold tracking-tight">{profileName}</span>
+            <span className="text-[10px] text-indigo-400 font-mono">Available_2026</span>
           </div>
         </div>
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center bg-white/5 rounded-full px-1 py-1 border border-white/5">
           {links.map((link) => {
             const isActive = currentSection === link.href.substring(1);
             return (
               <button
                 key={link.href}
                 onClick={() => onLinkClick(link.href)}
-                className={`relative px-4 py-2 text-xs font-mono transition-colors rounded-lg ${
-                  isActive ? "text-white" : "text-slate-400 hover:text-white"
-                }`}
+                className={`
+                  relative px-5 py-2 text-[11px] font-bold uppercase tracking-widest transition-all
+                  ${isActive ? "text-white" : "text-slate-400 hover:text-white"}
+                `}
               >
-                <span className="relative z-10">{link.label.toLowerCase()}()</span>
+                <span className="relative z-10">{link.label}</span>
                 {isActive && (
                   <motion.div 
-                    layoutId="pill"
-                    className="absolute inset-0 bg-indigo-500/20 border border-indigo-500/30 rounded-lg"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    layoutId="active-pill"
+                    className="absolute inset-0 bg-indigo-600 rounded-full shadow-[0_0_15px_rgba(79,70,229,0.4)]"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </button>
             );
           })}
         </div>
-        <div className="flex items-center gap-3">
-          <a 
-            href="/cv.pdf" 
-            className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-mono font-bold rounded-xl transition-all"
-          >
-            <FileCode size={14} />
-            <span className="hidden sm:inline">GET_CV.sh</span>
-          </a>
 
-          <button className="md:hidden text-white" onClick={() => setOpen(!open)}>
-            <Terminal size={24} />
+        <div className="flex items-center gap-2">
+          <a 
+            href="https://github.com/Arnel-rah" 
+            className="p-2.5 text-slate-400 hover:text-white transition-colors hidden sm:block"
+          >
+            <Github size={18} />
+          </a>
+          <button 
+            onClick={() => setOpen(!open)}
+            className="md:hidden p-2.5 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <button 
+            className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-white text-black text-[11px] font-black rounded-full hover:bg-indigo-500 hover:text-white transition-all active:scale-95"
+          >
+            <Command size={14} />
+            CONTACT
           </button>
         </div>
-      </div>
+      </motion.div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 right-0 mt-2 p-4 bg-[#020617]/95 backdrop-blur-2xl border border-indigo-500/20 rounded-2xl md:hidden"
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            className="absolute top-20 left-4 right-4 p-4 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-3xl md:hidden pointer-events-auto"
           >
             <div className="flex flex-col gap-2">
-              {links.map((link) => (
+              {links.map((link, i) => (
                 <button
                   key={link.href}
                   onClick={() => { onLinkClick(link.href); setOpen(false); }}
-                  className="py-3 text-left px-4 font-mono text-slate-300 hover:bg-indigo-500/10 rounded-lg transition-colors"
+                  className="flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-indigo-500/20 text-white transition-all group"
                 >
-                  {`> ${link.label}`}
+                  <span className="font-bold tracking-tight">{link.label}</span>
+                  <div className="p-2 bg-white/5 rounded-lg group-hover:bg-indigo-500 transition-colors">
+                    <ArrowIcon index={i} />
+                  </div>
                 </button>
               ))}
             </div>
@@ -117,6 +130,11 @@ const Navbar: React.FC<NavbarProps> = ({
       </AnimatePresence>
     </nav>
   );
+};
+
+const ArrowIcon = ({ index }: { index: number }) => {
+  const icons = [<User size={16} />, <Cpu size={16} />, <Command size={16} />];
+  return icons[index % icons.length];
 };
 
 export default Navbar;
