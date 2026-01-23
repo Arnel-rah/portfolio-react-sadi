@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Command, Menu, X, Cpu, Github, User } from "lucide-react";
+import { Menu, X, Cpu, Github, User, FileText, ChevronRight } from "lucide-react";
 
 export interface NavbarProps {
   profileImage: string;
@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`
-          flex items-center justify-between w-full max-w-4xl px-3 py-2
+          flex items-center justify-between w-full max-w-5xl px-3 py-2
           pointer-events-auto rounded-full border transition-all duration-500
           ${scrolled 
             ? "bg-black/60 backdrop-blur-xl border-white/10 shadow-2xl" 
@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div className="hidden sm:flex flex-col leading-none">
             <span className="text-white text-[13px] font-bold tracking-tight">{profileName}</span>
-            <span className="text-[10px] text-indigo-400 font-mono">Available_2026</span>
+            <span className="text-[10px] text-indigo-400 font-mono font-bold uppercase">Available_2026</span>
           </div>
         </div>
         <div className="hidden md:flex items-center bg-white/5 rounded-full px-1 py-1 border border-white/5">
@@ -81,26 +81,31 @@ const Navbar: React.FC<NavbarProps> = ({
             );
           })}
         </div>
-
         <div className="flex items-center gap-2">
           <a 
             href="https://github.com/Arnel-rah" 
+            target="_blank"
+            rel="noreferrer"
             className="p-2.5 text-slate-400 hover:text-white transition-colors hidden sm:block"
           >
             <Github size={18} />
           </a>
+          
           <button 
             onClick={() => setOpen(!open)}
             className="md:hidden p-2.5 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
-          <button 
-            className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-white text-black text-[11px] font-black rounded-full hover:bg-indigo-500 hover:text-white transition-all active:scale-95"
+          <a 
+            href="/cv.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-white text-black text-[11px] font-black rounded-full hover:bg-indigo-600 hover:text-white transition-all active:scale-95 shadow-lg"
           >
-            <Command size={14} />
-            CONTACT
-          </button>
+            <FileText size={14} />
+            RESUME
+          </a>
         </div>
       </motion.div>
       <AnimatePresence>
@@ -109,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            className="absolute top-20 left-4 right-4 p-4 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-3xl md:hidden pointer-events-auto"
+            className="absolute top-20 left-4 right-4 p-4 bg-[#0a0a0a]/95 backdrop-blur-2xl border border-white/10 rounded-3xl md:hidden pointer-events-auto shadow-2xl"
           >
             <div className="flex flex-col gap-2">
               {links.map((link, i) => (
@@ -118,12 +123,20 @@ const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => { onLinkClick(link.href); setOpen(false); }}
                   className="flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-indigo-500/20 text-white transition-all group"
                 >
-                  <span className="font-bold tracking-tight">{link.label}</span>
-                  <div className="p-2 bg-white/5 rounded-lg group-hover:bg-indigo-500 transition-colors">
+                  <div className="flex items-center gap-3">
                     <ArrowIcon index={i} />
+                    <span className="font-bold tracking-tight uppercase text-sm">{link.label}</span>
                   </div>
+                  <ChevronRight size={16} className="text-slate-600 group-hover:text-white transition-colors" />
                 </button>
               ))}
+              <a 
+                href="/votre-cv.pdf"
+                className="flex items-center justify-center gap-2 p-4 mt-2 rounded-2xl bg-white text-black font-black text-sm uppercase transition-all active:scale-95"
+              >
+                <FileText size={18} />
+                Download CV
+              </a>
             </div>
           </motion.div>
         )}
@@ -133,7 +146,7 @@ const Navbar: React.FC<NavbarProps> = ({
 };
 
 const ArrowIcon = ({ index }: { index: number }) => {
-  const icons = [<User size={16} />, <Cpu size={16} />, <Command size={16} />];
+  const icons = [<User size={18} className="text-indigo-400" />, <Cpu size={18} className="text-indigo-400" />, <FileText size={18} className="text-indigo-400" />];
   return icons[index % icons.length];
 };
 
