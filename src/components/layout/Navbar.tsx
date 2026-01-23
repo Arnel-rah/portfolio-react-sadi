@@ -65,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 key={link.href}
                 onClick={() => onLinkClick(link.href)}
                 className={`
-                  relative px-5 py-2 text-[11px] font-bold uppercase tracking-widest transition-all
+                  relative px-5 py-2 text-[11px] font-bold uppercase tracking-widest transition-all cursor-pointer
                   ${isActive ? "text-white" : "text-slate-400 hover:text-white"}
                 `}
               >
