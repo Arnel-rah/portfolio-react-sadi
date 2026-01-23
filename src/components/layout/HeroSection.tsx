@@ -6,7 +6,7 @@ const HeroSection: React.FC = () => {
   return (
     <section className="relative min-h-fit md:min-h-[90vh] flex flex-col justify-center px-4 md:px-10 overflow-hidden py-12 md:py-0">
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-indigo-600/20 blur-[130px] rounded-full pointer-events-none animate-pulse" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-600/20 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96  blur-[130px] rounded-full pointer-events-none" />
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
