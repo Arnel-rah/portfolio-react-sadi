@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import HeroSection from "./components/layout/HeroSection";
 import Project from "./components/layout/Project";
-import avatar from "../src/assets/profile.jpg";
+import avatar from "../src/assets/profil.png";
 import AboutMe from "./components/layout/AboutMe";
 
 const App: React.FC = () => {
