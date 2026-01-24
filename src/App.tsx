@@ -113,7 +113,7 @@ const App: React.FC = () => {
                   />
                   <button 
                     type="submit"
-                    className={`px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all active:scale-95 ${
+                    className={`px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all active:scale-95 cursor-pointer ${
                       status === "success" ? "bg-emerald-500 text-white" : "bg-white text-black hover:bg-indigo-600 hover:text-white"
                     }`}
                   >
