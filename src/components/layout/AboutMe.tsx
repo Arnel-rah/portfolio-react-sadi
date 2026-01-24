@@ -5,17 +5,23 @@ import {
   Cloud, Terminal, GitBranch
 } from "lucide-react";
 
+import { 
+  SiNodedotjs, SiPython, SiPostgresql, 
+  SiDocker, SiGit, SiLinux, 
+  SiAmazonwebservices, SiTerraform, SiRedis 
+} from "react-icons/si";
+
 const AboutMe: React.FC = () => {
   const skills = [
-    { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933", color: "text-green-500" },
-    { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB", color: "text-blue-400" },
-    { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1", color: "text-indigo-400" },
-    { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED", color: "text-sky-400" },
-    { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032", color: "text-orange-500" },
-    { name: "Linux", icon: "https://cdn.simpleicons.org/linux/white", color: "text-white" },
-    { name: "AWS", icon: "https://cdn.simpleicons.org/amazonwebservices/white", color: "text-white" },
-    { name: "Terraform", icon: "https://cdn.simpleicons.org/terraform/844FBA", color: "text-purple-400" },
-    { name: "Redis", icon: "https://cdn.simpleicons.org/redis/FF4438", color: "text-red-400" },
+    { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
+    { name: "Python", icon: SiPython, color: "text-blue-400" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "text-indigo-400" },
+    { name: "Docker", icon: SiDocker, color: "text-sky-400" },
+    { name: "Git", icon: SiGit, color: "text-orange-500" },
+    { name: "Linux", icon: SiLinux, color: "text-white" },
+    { name: "AWS", icon: SiAmazonwebservices, color: "text-orange-400" },
+    { name: "Terraform", icon: SiTerraform, color: "text-purple-400" },
+    { name: "Redis", icon: SiRedis, color: "text-red-400" },
   ];
 
   return (
@@ -64,24 +70,24 @@ const AboutMe: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {skills.map((skill) => (
-                <motion.div 
-                  key={skill.name}
-                  whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(99,102,241,0.3)" }}
-                  className="bg-white/5 border border-white/10 p-4 md:p-5 rounded-2xl flex items-center gap-4 transition-all group w-full"
-                >
-                  <img 
-                    src={skill.icon} 
-                    alt={skill.name} 
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                  />
-                  <span className={`text-base md:text-lg font-mono font-bold ${skill.color}`}>{skill.name}</span>
-                </motion.div>
-              ))}
+              {skills.map((skill) => {
+                const IconComponent = skill.icon;
+                return (
+                  <motion.div 
+                    key={skill.name}
+                    whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(99,102,241,0.3)" }}
+                    className="bg-white/5 border border-white/10 p-4 md:p-5 rounded-2xl flex items-center gap-4 transition-all group w-full"
+                  >
+                    <IconComponent 
+                      className={`text-2xl md:text-3xl grayscale group-hover:grayscale-0 transition-all duration-300 ${skill.color}`} 
+                    />
+                    <span className={`text-base md:text-lg font-mono font-bold ${skill.color}`}>{skill.name}</span>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </motion.div>
-
         <div className="flex flex-col gap-8">
           <motion.div 
             className="bg-linear-to-br from-indigo-600 to-indigo-800 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg min-h-70 flex flex-col justify-end"
