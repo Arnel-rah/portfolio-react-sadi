@@ -30,19 +30,19 @@ const projects = [
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800"
   },
   {
-    title: "Infra Monitoring",
-    description: "Real-time system log analysis and container health monitoring with Python and MongoDB.",
-    tags: ["Python", "Docker", "MongoDB"],
+    title: "UptimeGo",
+    description: "Lightweight Go CLI + daemon for HTTP endpoints monitoring. Concurrent checks, Prometheus metrics, graceful shutdown, Discord alerting. Cloud-native observability tool.",
+    tags: ["Go", "Prometheus", "Cobra", "Docker", "Observability"], 
     status: "building",
-    github: "#",
+    github: "https://github.com/Arnel-Rah/uptimego",
     demo: "#",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800"
+    image: "https://images.unsplash.com/photo-1518432031352-d7d4c7f5e7f2?q=80&w=800"
   }
 ];
 
 const Project = () => {
   return (
-    <section className="relative w-full  md:py-24 px-4 md:px-6 max-w-7xl mx-auto overflow-hidden">
+    <section className="relative w-full md:py-24 px-4 md:px-6 max-w-7xl mx-auto overflow-hidden">
       <div className="absolute top-0 right-0 w-125 h-125 bg-indigo-600/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="relative z-10 flex flex-col gap-6 md:gap-8 mb-16 md:mb-24 border-l-4 border-indigo-500 pl-6 md:pl-10">
@@ -68,7 +68,7 @@ const Project = () => {
           </div>
           <div className="flex items-center gap-2 group cursor-default">
             <Server size={16} className="text-blue-400 group-hover:scale-110 transition-transform" /> 
-            <span className="font-bold">AWS / Linux Env</span>
+            <span className="font-bold">Go / Cloud-Native</span>
           </div>
         </div>
       </div>
@@ -85,6 +85,5 @@ const Project = () => {
     </section>
   );
 };
-
 
 export default Project;

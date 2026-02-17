@@ -10,13 +10,15 @@ const TECH_ICONS: Record<string, { icon: string; color: string }> = {
   TypeScript: { icon: "https://cdn.simpleicons.org/typescript/3178C6", color: "#3178C6" },
   React: { icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB" },
   "Next.js": { icon: "https://cdn.simpleicons.org/nextdotjs/white", color: "#ffffff" },
-  Ansible: { icon: "https://cdn.simpleicons.org/ansible/EE0000", color: "#EE0000" },
-  Stripe: { icon: "https://cdn.simpleicons.org/stripe/008CDD", color: "#008CDD" },
   Docker: { icon: "https://cdn.simpleicons.org/docker/2496ED", color: "#2496ED" },
-  Terraform: { icon: "https://cdn.simpleicons.org/terraform/844FBA", color: "#844FBA" },
   PostgreSQL: { icon: "https://cdn.simpleicons.org/postgresql/4169E1", color: "#4169E1" },
   Redis: { icon: "https://cdn.simpleicons.org/redis/FF4438", color: "#FF4438" },
   MongoDB: { icon: "https://cdn.simpleicons.org/mongodb/47A248", color: "#47A248" },
+  Stripe: { icon: "https://cdn.simpleicons.org/stripe/008CDD", color: "#008CDD" },
+  Go: { icon: "https://cdn.simpleicons.org/go/00ADD8", color: "#00ADD8" },
+  Prometheus: { icon: "https://cdn.simpleicons.org/prometheus/E6522C", color: "#E6522C" },
+  Cobra: { icon: "https://cdn.simpleicons.org/go/00ADD8", color: "#00ADD8" },
+  Observability: { icon: "https://cdn.simpleicons.org/prometheus/E6522C", color: "#E6522C" },
 };
 
 export interface ProjectCardProps {
@@ -29,7 +31,15 @@ export interface ProjectCardProps {
   index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, github, demo, status, index }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ 
+  title, 
+  description, 
+  tags, 
+  github, 
+  demo, 
+  status, 
+  index 
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -50,6 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, git
           node_v{index + 1}.0
         </div>
       </div>
+
       <div className="p-6 md:p-8 flex flex-col grow">
         <div className="flex justify-between items-start mb-6 shrink-0">
           <div className="p-3 bg-white/5 rounded-2xl border border-white/10 group-hover:border-indigo-500/50 transition-all">
@@ -77,6 +88,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, git
         <h3 className="text-xl font-black text-white tracking-tight mb-3 group-hover:text-indigo-400 transition-colors shrink-0">
           {title}
         </h3>
+        
         <p className="text-slate-300 text-sm font-mono leading-relaxed mb-6 line-clamp-3 grow">
           <span className="text-indigo-400 font-black mr-2">❯</span>
           {description}
@@ -86,7 +98,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, git
           {tags.map((tag) => (
             <div key={tag} className="group/icon relative flex items-center">
               <img
-                src={TECH_ICONS[tag]?.icon}
+                src={TECH_ICONS[tag]?.icon || "https://cdn.simpleicons.org/code/white"}
                 alt={tag}
                 className="w-5 h-5 opacity-70 grayscale group-hover/icon:grayscale-0 group-hover/icon:opacity-100 transition-all"
               />
@@ -99,9 +111,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tags, git
             <a href={github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
               <Github size={20} />
             </a>
-            <a href={demo} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
-              <ExternalLink size={20} />
-            </a>
+            {demo !== "#" && (
+              <a href={demo} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
+                <ExternalLink size={20} />
+              </a>
+            )}
           </div>
           
           <button className="text-[10px] font-mono text-indigo-300 font-black uppercase tracking-widest flex items-center gap-1 group/btn">
