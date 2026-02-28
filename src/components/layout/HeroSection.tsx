@@ -1,80 +1,119 @@
 import React from "react";
-import { Mail, Github, Linkedin, Cloud, Server, ChevronRight } from "lucide-react";
+import { Mail, Github, Linkedin, Code2, Server, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-fit md:min-h-[90vh] flex flex-col justify-center px-4 md:px-10 overflow-hidden py-12 md:py-0">
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-indigo-600/20 blur-[130px] rounded-full pointer-events-none animate-pulse" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96  blur-[130px] rounded-full pointer-events-none" />
-      
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-950 via-indigo-950/30 to-gray-950 px-5 sm:px-8 md:px-12 lg:px-16 overflow-hidden py-16 md:py-0">
+      {/* Glows d'ambiance – plus discrets sur mobile */}
+      <div className="absolute top-1/4 -left-32 sm:-left-20 w-64 sm:w-96 h-64 sm:h-96 bg-indigo-600/10 sm:bg-indigo-600/20 blur-3xl rounded-full pointer-events-none animate-pulse-slow" />
+      <div className="absolute bottom-1/4 -right-32 sm:-right-20 w-64 sm:w-96 h-64 sm:h-96 bg-blue-600/10 sm:bg-blue-600/20 blur-3xl rounded-full pointer-events-none animate-pulse-slow" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-5xl z-10"
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="relative z-10 w-full max-w-6xl mx-auto"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-400/10 border border-blue-400/30 text-blue-300 text-[10px] md:text-xs font-mono mb-6 md:mb-8 w-fit shadow-[0_0_15px_rgba(96,165,250,0.1)]">
-          <Cloud size={14} className="shrink-0" />
-          <span className="uppercase tracking-wider font-bold">
-            <span className="hidden sm:inline">Focus: </span>
-            <span className="animate-pulse">Backend & Cloud Infrastructure 2026</span>
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 sm:px-5 sm:py-2 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs sm:text-sm font-mono tracking-wide mb-6 sm:mb-10 w-fit shadow-md shadow-indigo-500/10">
+          <Code2 size={16} className="shrink-0" />
+          <span className="uppercase font-semibold">
+            Full Stack Engineer · Go & Distributed Systems
           </span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter leading-[0.95] md:leading-[0.9] mb-6 md:mb-8">
-          <span className="text-white block tracking-tight drop-shadow-2xl">BACKEND</span>
+        {/* Titre principal – tailles responsives avec clamp */}
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.92] mb-6 sm:mb-10">
+          <span className="text-white block">FULLSTACK</span>
+
           <span className="relative inline-block">
-            <span className="text-indigo-400 italic uppercase drop-shadow-[0_0_10px_rgba(129,140,248,0.5)]">Engineer</span>
-            <motion.span 
-              className="absolute -bottom-1 md:-bottom-2 left-0 h-1 md:h-2 w-full bg-indigo-400/40"
+            <span className="text-indigo-400">Software</span>
+            <motion.span
+              className="absolute -bottom-1.5 left-0 h-1 bg-indigo-500/50"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
-              transition={{ delay: 1, duration: 0.8 }}
+              transition={{ delay: 0.8, duration: 1.2 }}
             />
           </span>
-          <br className="hidden sm:block" />
-          <span className="text-slate-200/50 block sm:inline mt-2 sm:mt-0">INFRA & </span>
-          <span className="text-blue-300 font-mono font-light italic text-2xl sm:text-5xl md:text-6xl block sm:inline brightness-110">
-            cloud_architect
+
+          <span className="text-slate-300/80 block sm:inline mt-1 sm:mt-0 sm:ml-4">
+            ENGINEER
+          </span>
+
+          <span className="block sm:inline text-blue-300/90 font-mono font-light text-2xl sm:text-4xl md:text-5xl lg:text-6xl mt-2 sm:mt-0 sm:ml-3 brightness-110">
+            distributed_systems
           </span>
         </h1>
 
-        <div className="relative group max-w-xl">
-          <div className="absolute -inset-1 bg-linear-to-r from-blue-500/30 to-indigo-500/30 rounded-xl blur-md opacity-50 group-hover:opacity-100 transition duration-1000"></div>
-          
-          <div className="relative p-5 md:p-8 bg-[#0f1115]/95 backdrop-blur-md border border-white/10 rounded-xl font-mono text-xs md:text-base leading-relaxed overflow-hidden shadow-2xl">
-            <div className="flex gap-2 mb-4 border-b border-white/10 pb-2">
-              <Server size={14} className="text-indigo-400" />
-              <span className="text-slate-400 text-[10px] font-bold">arnel-infra-config.yml</span>
+        {/* Bloc code – responsive */}
+        <div className="relative group mt-8 sm:mt-12 max-w-2xl mx-auto sm:mx-0">
+          <div className="absolute -inset-1.5 sm:-inset-2 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 rounded-2xl blur-xl opacity-40 sm:opacity-60 group-hover:opacity-80 transition duration-700" />
+
+          <div className="relative p-5 sm:p-7 md:p-9 bg-gray-900/80 backdrop-blur-md border border-white/8 rounded-2xl font-mono text-sm sm:text-base leading-relaxed shadow-2xl">
+            <div className="flex items-center gap-2.5 mb-4 sm:mb-5 pb-3 border-b border-white/10">
+              <Server size={16} className="text-indigo-400" />
+              <span className="text-slate-500 text-xs sm:text-sm font-semibold">
+                arnel-stack-config.yml
+              </span>
             </div>
-            <p className="space-y-1">
-              <span className="text-blue-400 font-bold">infrastructure:</span> <br />
-              <span className="ml-4 md:ml-6 text-slate-300">cloud: <span className="text-emerald-300">"AWS / Docker"</span></span> <br />
-              <span className="ml-4 md:ml-6 text-slate-300">backend: <span className="text-amber-300">["Node.js", "Python", "SQL"]</span></span> <br />
-              <span className="ml-4 md:ml-6 text-slate-300">goal: <span className="text-indigo-300">"High_Scalability"</span></span>
-            </p>
+
+            <div className="space-y-2 sm:space-y-3 text-slate-300">
+              <div>
+                <span className="text-indigo-400 font-semibold">engineer:</span>
+              </div>
+              <div className="pl-4 sm:pl-6">
+                specialized:{" "}
+                <span className="text-emerald-300">"Go & Distributed Systems"</span>
+              </div>
+              <div className="pl-4 sm:pl-6">
+                stack:{" "}
+                <span className="text-amber-300">
+                  ["Go", "React", "PostgreSQL", "Docker"]
+                </span>
+              </div>
+              <div className="pl-4 sm:pl-6">
+                focus:{" "}
+                <span className="text-indigo-300">"Scalable_Fullstack_Products"</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-6 sm:items-center">
+        {/* CTA area */}
+        <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
           <motion.a
-            whileHover={{ scale: 1.05, boxShadow: "0_0_20px_rgba(255,255,255,0.2)" }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.04, boxShadow: "0 0 30px rgba(129,140,248,0.4)" }}
+            whileTap={{ scale: 0.97 }}
             href="mailto:sadiarnel145@gmail.com"
-            className="group flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-black rounded-full text-[10px] md:text-xs uppercase tracking-widest transition-all hover:bg-indigo-500 hover:text-white"
+            className="group flex items-center justify-center gap-3 px-7 sm:px-9 py-4 bg-gradient-to-r from-indigo-500 to-blue-600 text-white font-bold rounded-full text-sm sm:text-base uppercase tracking-wider shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 transition-all"
           >
-            <Mail size={16} />
-            Connect to Server
-            <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            <Mail size={18} />
+            Let's connect
+            <ChevronRight
+              size={18}
+              className="group-hover:translate-x-1.5 transition-transform"
+            />
           </motion.a>
 
-          <div className="flex items-center justify-center sm:justify-start gap-6">
-            <a href="https://github.com/Arnel-rah" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-indigo-400 transition-colors flex items-center gap-2 text-[10px] md:text-xs font-mono font-bold uppercase">
-              <Github size={18} /> .git
+          <div className="flex items-center gap-6 sm:gap-8">
+            <a
+              href="https://github.com/Arnel-rah"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-slate-300 hover:text-indigo-400 transition-colors text-sm font-mono font-semibold uppercase"
+            >
+              <Github size={20} />
+              .git
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-indigo-400 transition-colors flex items-center gap-2 text-[10px] md:text-xs font-mono font-bold uppercase">
-              <Linkedin size={18} /> .network
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-slate-300 hover:text-indigo-400 transition-colors text-sm font-mono font-semibold uppercase"
+            >
+              <Linkedin size={20} />
+              .network
             </a>
           </div>
         </div>
