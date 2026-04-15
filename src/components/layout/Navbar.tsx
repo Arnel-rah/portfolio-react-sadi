@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Cpu, Github, User, FileText, ChevronRight, Terminal, Layers } from "lucide-react";
+import { Menu, X, Github, User, FileText, ChevronRight, Terminal, Layers } from "lucide-react";
 
 export interface NavbarProps {
   profileImage: string;
