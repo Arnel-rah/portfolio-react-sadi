@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Cpu, Github, User, FileText, ChevronRight } from "lucide-react";
+import { Menu, X, Cpu, Github, User, FileText, ChevronRight, Terminal, Layers } from "lucide-react";
 
 export interface NavbarProps {
   profileImage: string;
@@ -34,29 +34,30 @@ const Navbar: React.FC<NavbarProps> = ({
         className={`
           flex items-center justify-between w-full max-w-5xl px-3 py-2
           pointer-events-auto rounded-full border transition-all duration-500
-          ${scrolled 
-            ? "bg-black/60 backdrop-blur-xl border-white/10 shadow-2xl" 
+          ${scrolled
+            ? "bg-black/60 backdrop-blur-xl border-white/10 shadow-2xl"
             : "bg-transparent border-transparent"
           }
         `}
       >
-        <div 
+        <div
           className="flex items-center gap-3 cursor-pointer group"
           onClick={() => onLinkClick("#home")}
         >
           <div className="relative">
-            <img 
-              src={profileImage} 
+            <img
+              src={profileImage}
               alt={profileName}
               className="w-9 h-9 rounded-full object-cover border-2 border-indigo-500/50 group-hover:border-indigo-500 transition-colors"
             />
             <div className="absolute inset-0 rounded-full bg-indigo-500/20 animate-pulse group-hover:hidden" />
           </div>
-          <div className="hidden sm:flex flex-col leading-none">
+          <div className="hidden sm:flex flex-col leading-none gap-2">
             <span className="text-white text-[13px] font-bold tracking-tight">{profileName}</span>
-            <span className="text-[10px] text-indigo-400 font-mono font-bold uppercase">Available_2026</span>
+            <span className="text-[10px] text-indigo-400 font-mono font-bold uppercase">Backend & Infra</span>
           </div>
         </div>
+
         <div className="hidden md:flex items-center bg-white/5 rounded-full px-1 py-1 border border-white/5">
           {links.map((link) => {
             const isActive = currentSection === link.href.substring(1);
@@ -71,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({
               >
                 <span className="relative z-10">{link.label}</span>
                 {isActive && (
-                  <motion.div 
+                  <motion.div
                     layoutId="active-pill"
                     className="absolute inset-0 bg-indigo-600 rounded-full shadow-[0_0_15px_rgba(79,70,229,0.4)]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -81,23 +82,25 @@ const Navbar: React.FC<NavbarProps> = ({
             );
           })}
         </div>
+
         <div className="flex items-center gap-2">
-          <a 
-            href="https://github.com/Arnel-rah" 
+          <a
+            href="https://github.com/Arnel-rah"
             target="_blank"
             rel="noreferrer"
             className="p-2.5 text-slate-400 hover:text-white transition-colors hidden sm:block"
           >
             <Github size={18} />
           </a>
-          
-          <button 
+
+          <button
             onClick={() => setOpen(!open)}
             className="md:hidden p-2.5 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
-          <a 
+
+          <a
             href="/cv.pdf"
             target="_blank"
             rel="noreferrer"
@@ -108,6 +111,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </a>
         </div>
       </motion.div>
+
       <AnimatePresence>
         {open && (
           <motion.div
@@ -130,8 +134,8 @@ const Navbar: React.FC<NavbarProps> = ({
                   <ChevronRight size={16} className="text-slate-600 group-hover:text-white transition-colors" />
                 </button>
               ))}
-              <a 
-                href="/votre-cv.pdf"
+              <a
+                href="/cv.pdf"
                 className="flex items-center justify-center gap-2 p-4 mt-2 rounded-2xl bg-white text-black font-black text-sm uppercase transition-all active:scale-95"
               >
                 <FileText size={18} />
@@ -146,7 +150,11 @@ const Navbar: React.FC<NavbarProps> = ({
 };
 
 const ArrowIcon = ({ index }: { index: number }) => {
-  const icons = [<User size={18} className="text-indigo-400" />, <Cpu size={18} className="text-indigo-400" />, <FileText size={18} className="text-indigo-400" />];
+  const icons = [
+    <User size={18} className="text-indigo-400" />,
+    <Terminal size={18} className="text-indigo-400" />,
+    <Layers size={18} className="text-indigo-400" />
+  ];
   return icons[index % icons.length];
 };
 
