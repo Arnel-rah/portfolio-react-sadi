@@ -1,27 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  Database, MapPin, Activity, 
+import {
+  Database, MapPin, Activity,
   Cloud, Terminal, GitBranch
 } from "lucide-react";
 
-import { 
-  SiNodedotjs, SiPython, SiPostgresql, 
-  SiDocker, SiGit, SiLinux, 
-  SiAmazonwebservices, SiTerraform, SiRedis 
+import {
+  SiGo, SiRust, SiPostgresql,
+  SiDocker, SiGit, SiLinux,
+  SiAmazonwebservices, SiTerraform, SiRedis,
+  SiNextdotjs, SiTypescript, SiKubernetes
 } from "react-icons/si";
 
 const AboutMe: React.FC = () => {
   const skills = [
-    { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
-    { name: "Python", icon: SiPython, color: "text-blue-400" },
-    { name: "PostgreSQL", icon: SiPostgresql, color: "text-indigo-400" },
+    { name: "Go", icon: SiGo, color: "text-sky-400" },
+    { name: "Rust", icon: SiRust, color: "text-orange-500" },
+    { name: "Kubernetes", icon: SiKubernetes, color: "text-blue-400" },
     { name: "Docker", icon: SiDocker, color: "text-sky-400" },
+    { name: "Terraform", icon: SiTerraform, color: "text-purple-400" },
+    { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
+    { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "text-indigo-400" },
+    { name: "Redis", icon: SiRedis, color: "text-red-400" },
     { name: "Git", icon: SiGit, color: "text-orange-500" },
     { name: "Linux", icon: SiLinux, color: "text-white" },
     { name: "AWS", icon: SiAmazonwebservices, color: "text-orange-400" },
-    { name: "Terraform", icon: SiTerraform, color: "text-purple-400" },
-    { name: "Redis", icon: SiRedis, color: "text-red-400" },
   ];
 
   return (
@@ -56,40 +60,43 @@ const AboutMe: React.FC = () => {
               <div className="w-3 h-3 rounded-full bg-emerald-500/20" />
             </div>
             <div className="text-xs font-mono text-slate-500 lowercase flex items-center gap-2">
-                <GitBranch size={14} /> <span className="hidden sm:inline">main/</span>backend_stack.config
+                <GitBranch size={14} /> <span className="hidden sm:inline">main/</span>backend_infra_stack
             </div>
           </div>
 
           <div className="p-6 md:p-12 grow">
             <h3 className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-6 leading-tight text-balance">
-              Aspiring <span className="text-indigo-400">Backend Engineer</span> focused on Infrastructure & Cloud
+              Backend <span className="text-indigo-400">Engineer</span> focused on Infrastructure & Cloud
             </h3>
-            
+
             <p className="text-slate-400 leading-relaxed text-base md:text-xl mb-10 font-mono">
-              I build robust server-side applications and automate deployment workflows. My goal is to design scalable systems that bridge the gap between clean code and reliable cloud infrastructure.
+              I build robust server-side applications in <span className="text-sky-400">Go</span> and <span className="text-orange-500">Rust</span>,
+              containerize them with <span className="text-sky-400">Docker</span>, orchestrate with <span className="text-blue-400">Kubernetes</span>,
+              and automate cloud deployments. My goal is scalable, reliable infrastructure.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
               {skills.map((skill) => {
                 const IconComponent = skill.icon;
                 return (
-                  <motion.div 
+                  <motion.div
                     key={skill.name}
                     whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.05)", borderColor: "rgba(99,102,241,0.3)" }}
-                    className="bg-white/5 border border-white/10 p-4 md:p-5 rounded-2xl flex items-center gap-4 transition-all group w-full"
+                    className="bg-white/5 border border-white/10 p-3 md:p-4 rounded-2xl flex items-center gap-3 transition-all group w-full"
                   >
-                    <IconComponent 
-                      className={`text-2xl md:text-3xl grayscale group-hover:grayscale-0 transition-all duration-300 ${skill.color}`} 
+                    <IconComponent
+                      className={`text-xl md:text-2xl grayscale group-hover:grayscale-0 transition-all duration-300 ${skill.color}`}
                     />
-                    <span className={`text-base md:text-lg font-mono font-bold ${skill.color}`}>{skill.name}</span>
+                    <span className={`text-sm md:text-base font-mono font-bold ${skill.color}`}>{skill.name}</span>
                   </motion.div>
                 );
               })}
             </div>
           </div>
         </motion.div>
+
         <div className="flex flex-col gap-8">
-          <motion.div 
+          <motion.div
             className="bg-linear-to-br from-indigo-600 to-indigo-800 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg min-h-70 flex flex-col justify-end"
           >
             <Cloud className="absolute -right-4 -bottom-4 opacity-20 group-hover:scale-110 transition-transform duration-700 w-32 h-32 md:w-40 md:h-40" />
@@ -100,7 +107,7 @@ const AboutMe: React.FC = () => {
               </div>
               <h4 className="text-4xl md:text-5xl font-black uppercase tracking-tighter italic leading-none mb-4">CLOUD <br/>NATIVE</h4>
               <p className="text-base md:text-lg opacity-90 font-mono leading-relaxed">
-                Ready to manage containerized environments and CI/CD pipelines.
+                Go · Rust · Docker · Kubernetes
               </p>
             </div>
           </motion.div>
@@ -113,18 +120,18 @@ const AboutMe: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 text-indigo-500 bg-indigo-500/5 px-3 py-1 rounded-full border border-indigo-500/10 w-fit">
                 <MapPin size={16} />
-                <span className="text-xs font-mono font-bold tracking-tighter uppercase">Remote / Paris</span>
+                <span className="text-xs font-mono font-bold tracking-tighter uppercase">Remote / Madagascar</span>
               </div>
             </div>
-            
+
             <div className="space-y-4">
                 <div className="flex items-center justify-between text-sm md:text-base font-mono border-b border-white/5 pb-3">
                     <span className="text-slate-500">Commitment</span>
-                    <span className="text-white font-medium">Full-time</span>
+                    <span className="text-white font-medium">Full-time / Internship</span>
                 </div>
                 <div className="flex items-center justify-between text-sm md:text-base font-mono">
                     <span className="text-slate-500">Availability</span>
-                    <span className="text-emerald-500 font-bold">Open to Work</span>
+                    <span className="text-emerald-500 font-bold">Open for internships</span>
                 </div>
             </div>
           </div>
