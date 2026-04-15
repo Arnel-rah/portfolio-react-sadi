@@ -3,21 +3,16 @@ import { motion } from "framer-motion";
 import { Github, ExternalLink, Terminal, ChevronRight } from "lucide-react";
 
 const TECH_ICONS: Record<string, { icon: string; color: string }> = {
-  Python: { icon: "https://cdn.simpleicons.org/python/3776AB", color: "#3776AB" },
-  Java: { icon: "https://cdn.simpleicons.org/openjdk/white", color: "#ffffff" },
-  Express: { icon: "https://cdn.simpleicons.org/express/white", color: "#ffffff" },
-  "Node.js": { icon: "https://cdn.simpleicons.org/nodedotjs/339933", color: "#339933" },
-  TypeScript: { icon: "https://cdn.simpleicons.org/typescript/3178C6", color: "#3178C6" },
-  React: { icon: "https://cdn.simpleicons.org/react/61DAFB", color: "#61DAFB" },
-  "Next.js": { icon: "https://cdn.simpleicons.org/nextdotjs/white", color: "#ffffff" },
+  Go: { icon: "https://cdn.simpleicons.org/go/00ADD8", color: "#00ADD8" },
   Docker: { icon: "https://cdn.simpleicons.org/docker/2496ED", color: "#2496ED" },
   PostgreSQL: { icon: "https://cdn.simpleicons.org/postgresql/4169E1", color: "#4169E1" },
   Redis: { icon: "https://cdn.simpleicons.org/redis/FF4438", color: "#FF4438" },
-  MongoDB: { icon: "https://cdn.simpleicons.org/mongodb/47A248", color: "#47A248" },
-  Stripe: { icon: "https://cdn.simpleicons.org/stripe/008CDD", color: "#008CDD" },
-  Go: { icon: "https://cdn.simpleicons.org/go/00ADD8", color: "#00ADD8" },
+  "Next.js": { icon: "https://cdn.simpleicons.org/nextdotjs/white", color: "#ffffff" },
+  TypeScript: { icon: "https://cdn.simpleicons.org/typescript/3178C6", color: "#3178C6" },
+  Tailwind: { icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "#06B6D4" },
   Prometheus: { icon: "https://cdn.simpleicons.org/prometheus/E6522C", color: "#E6522C" },
-  Cobra: { icon: "https://cdn.simpleicons.org/go/00ADD8", color: "#00ADD8" },
+  JWT: { icon: "https://cdn.simpleicons.org/jsonwebtokens/white", color: "#ffffff" },
+  REST: { icon: "https://cdn.simpleicons.org/rest/white", color: "#ffffff" },
   Observability: { icon: "https://cdn.simpleicons.org/prometheus/E6522C", color: "#E6522C" },
 };
 
@@ -31,14 +26,14 @@ export interface ProjectCardProps {
   index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ 
-  title, 
-  description, 
-  tags, 
-  github, 
-  demo, 
-  status, 
-  index 
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
+  description,
+  tags,
+  github,
+  demo,
+  status,
+  index
 }) => {
   return (
     <motion.div
@@ -49,7 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       whileHover={{ y: -8 }}
       className="relative flex flex-col bg-[#0f1115] border border-white/10 rounded-2xl overflow-hidden group shadow-2xl h-full transition-all duration-500 hover:border-indigo-500/50"
     >
-      <div className="flex items-center justify-between px-5 py-3 bg-white/3 border-b border-white/10 shrink-0">
+      <div className="flex items-center justify-between px-5 py-3 bg-white/5 border-b border-white/10 shrink-0">
         <div className="flex gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
           <div className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
@@ -57,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <div className="flex items-center gap-2 text-[10px] font-mono text-slate-300 font-bold uppercase">
           <Terminal size={12} className="text-indigo-400" />
-          node_v{index + 1}.0
+          {status === "building" ? "dev" : "prod"}_node_{index + 1}
         </div>
       </div>
 
@@ -65,12 +60,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="flex justify-between items-start mb-6 shrink-0">
           <div className="p-3 bg-white/5 rounded-2xl border border-white/10 group-hover:border-indigo-500/50 transition-all">
             <img
-              src={TECH_ICONS[tags[0]]?.icon || "https://cdn.simpleicons.org/code/white"}
-              alt={tags[0]}
+              src={TECH_ICONS[tags[0]]?.icon || "https://cdn.simpleicons.org/go/00ADD8"}
+              alt={tags[0] || "Go"}
               className="w-8 h-8 object-contain brightness-110"
             />
           </div>
-          
+
           <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-mono font-black border uppercase ${
               status === "online" ? "bg-emerald-500/20 border-emerald-500/30 text-emerald-300" :
               status === "building" ? "bg-amber-500/20 border-amber-500/30 text-amber-300" :
@@ -79,7 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             <span className={`w-2 h-2 rounded-full animate-pulse ${
                 status === "online" ? "bg-emerald-400" :
                 status === "building" ? "bg-amber-400" : "bg-blue-400"
-              }`} 
+              }`}
             />
             {status}
           </div>
@@ -88,7 +83,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <h3 className="text-xl font-black text-white tracking-tight mb-3 group-hover:text-indigo-400 transition-colors shrink-0">
           {title}
         </h3>
-        
+
         <p className="text-slate-300 text-sm font-mono leading-relaxed mb-6 line-clamp-3 grow">
           <span className="text-indigo-400 font-black mr-2">❯</span>
           {description}
@@ -98,28 +93,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {tags.map((tag) => (
             <div key={tag} className="group/icon relative flex items-center">
               <img
-                src={TECH_ICONS[tag]?.icon || "https://cdn.simpleicons.org/code/white"}
+                src={TECH_ICONS[tag]?.icon || "https://cdn.simpleicons.org/go/00ADD8"}
                 alt={tag}
                 className="w-5 h-5 opacity-70 grayscale group-hover/icon:grayscale-0 group-hover/icon:opacity-100 transition-all"
               />
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black/90 text-white text-[9px] font-mono px-2 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                {tag}
+              </span>
             </div>
           ))}
         </div>
 
         <div className="flex items-center justify-between pt-6 border-t border-white/10 mt-auto shrink-0">
           <div className="flex gap-3">
-            <a href={github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
-              <Github size={20} />
-            </a>
+            {github !== "#" && (
+              <a href={github} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
+                <Github size={20} />
+              </a>
+            )}
             {demo !== "#" && (
               <a href={demo} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
                 <ExternalLink size={20} />
               </a>
             )}
           </div>
-          
+
           <button className="text-[10px] font-mono text-indigo-300 font-black uppercase tracking-widest flex items-center gap-1 group/btn">
-            Logs <ChevronRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+            Details <ChevronRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>
